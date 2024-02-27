@@ -12,8 +12,8 @@ using challange_disney.Data;
 namespace challangedisney.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240226143223_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240227173033_StatusInMovie")]
+    partial class StatusInMovie
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,17 @@ namespace challangedisney.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Characters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 25,
+                            Bio = "asd",
+                            Image = "asdads",
+                            Name = "Robert",
+                            Weight = 75
+                        });
                 });
 
             modelBuilder.Entity("challange_disney.Models.Entities.Genre", b =>
@@ -90,6 +101,14 @@ namespace challangedisney.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Image = "asdasd",
+                            Name = "Drama"
+                        });
                 });
 
             modelBuilder.Entity("challange_disney.Models.Entities.Movie", b =>
@@ -113,6 +132,9 @@ namespace challangedisney.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -122,6 +144,18 @@ namespace challangedisney.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("Movies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreationDate = new DateTime(2014, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GenreId = 1,
+                            Image = "asda",
+                            Rating = 2,
+                            Status = 0,
+                            Title = "Peli 1"
+                        });
                 });
 
             modelBuilder.Entity("CharacterMovie", b =>

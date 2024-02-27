@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace challangedisney.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -88,6 +88,21 @@ namespace challangedisney.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Characters",
+                columns: new[] { "Id", "Age", "Bio", "Image", "Name", "Weight" },
+                values: new object[] { 1, 25, "asd", "asdads", "Robert", 75 });
+
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Image", "Name" },
+                values: new object[] { 1, "asdasd", "Drama" });
+
+            migrationBuilder.InsertData(
+                table: "Movies",
+                columns: new[] { "Id", "CreationDate", "GenreId", "Image", "Rating", "Title" },
+                values: new object[] { 1, new DateTime(2014, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "asda", 2, "Peli 1" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CharacterMovie_MoviesId",
