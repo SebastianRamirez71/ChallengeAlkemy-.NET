@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "CKBa8iyrmxwmTQdk6Yi5BBoccRtDfYmlM4TRsVNJJzB1UZ0WI/eM5z13FKM9tpZmiz/WKcl8XR5tjqhprINZZg==",
+  "dgSpecHash": "w+3dpoyO4z8rRkB0ppW2JWtHES2MGqkRlklg8+/7wom1niSZv3AG1I+8CLvQJqRFv4F/8AeXoJpSYqlxtzfHlQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sebar\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\azure.core\\1.37.0\\azure.core.1.37.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

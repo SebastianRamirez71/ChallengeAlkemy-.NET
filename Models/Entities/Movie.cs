@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using challange_disney.DTO;
+using System.ComponentModel.DataAnnotations;
 
 namespace challange_disney.Models.Entities
 {
-    public enum MovieStatus
-    {
-        Inactivo,
-        Activo
-        
-    }
+
     public class Movie
     {
         public Movie()
         {
-               Status = MovieStatus.Activo;
+               Status = GeneralStatus.Activo;
         }
 
 
@@ -26,7 +22,7 @@ namespace challange_disney.Models.Entities
         public int Rating { get; set; }
         [Range(1,5)]
         public int GenreId { get; set; }
-        public MovieStatus Status { get; set; }
+        public GeneralStatus Status { get; set; }
 
         public IEnumerable<Character>? Characters { get; set; }
 

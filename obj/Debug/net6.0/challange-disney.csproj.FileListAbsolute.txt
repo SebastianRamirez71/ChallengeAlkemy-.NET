@@ -96,3 +96,4 @@ C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\System.CodeDo
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\AutoMapper.dll

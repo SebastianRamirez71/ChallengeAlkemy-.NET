@@ -1,5 +1,8 @@
-﻿using challange_disney.Data;
+﻿
+using AutoMapper;
+using challange_disney.Data;
 using challange_disney.DTO;
+using challange_disney.Mappings;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Interfaces;
 
@@ -8,13 +11,17 @@ namespace challange_disney.Services.Implementations
     public class MovieService : IMovieService
     {
         private readonly Context _context;
+        private readonly IMapper _mapper;
         public MovieService(Context context)
         {
             _context = context;
+            _mapper = AutoMapperConfig.Configure();
+           
+            
         }
-        public List<Movie> GetMovies()
+        public List<MovieDTO> GetMovies()
         {
-            return _context.Movies.ToList();
+            return _mapper.Map<List<MovieDTO>>(_context.Movies.Where(x => x.Status == GeneralStatus.Activo)).ToList();
         }
 
         public Movie AddMovie(AddMovieDTO newMovie)
@@ -39,7 +46,7 @@ namespace challange_disney.Services.Implementations
             var movieToDelete = _context.Movies.FirstOrDefault(x => x.Id == id);
             if (movieToDelete != null)
             {
-                movieToDelete.Status = MovieStatus.Inactivo;
+                movieToDelete.Status = GeneralStatus.Inactivo;
                 _context.SaveChanges();
             }
         }

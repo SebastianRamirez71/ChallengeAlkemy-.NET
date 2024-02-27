@@ -1,4 +1,5 @@
-﻿using challange_disney.DTO;
+﻿using AutoMapper;
+using challange_disney.DTO;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -8,15 +9,17 @@ namespace challange_disney.Controllers
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;
+  
         public MovieController(IMovieService service)
         {
             _movieService = service;
+            
         }
 
         [HttpGet("Obtener")]
         public IActionResult GetMovies()
         {
-            return Ok(_movieService.GetMovies().Where(x => x.Status == MovieStatus.Activo).ToList());
+            return Ok(_movieService.GetMovies());
         }
 
         [HttpPost("Agregar")]
