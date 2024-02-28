@@ -8,8 +8,9 @@ namespace challange_disney.Mappings
     {
         public MappingProfile()
         {
-            // Cuando tienen el mismo nombre de props se realiza de esta manera
-            CreateMap<Movie, MovieDTO>(); 
+            //Cuando las props de las 2 entidades tienen el mismo nombre, se realiza de esta manera
+            CreateMap<Movie, MovieDTO>();
+            CreateMap<Character, CharacterDTO>();
         }
     }
 }

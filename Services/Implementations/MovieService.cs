@@ -31,8 +31,8 @@ namespace challange_disney.Services.Implementations
                 CreationDate = newMovie.CreationDate,
                 Image = newMovie.Image,
                 Title = newMovie.Title,
-                Rating = newMovie.Rating,
                 GenreId = newMovie.GenreId,
+                Rating = newMovie.Rating
             };
             _context.Movies.Add(movie);
             _context.SaveChanges();

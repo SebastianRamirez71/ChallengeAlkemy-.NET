@@ -22,7 +22,7 @@ namespace challange_disney.Controllers
             return Ok(_movieService.GetMovies());
         }
 
-        [HttpPost("Agregar")]
+        [HttpPost]
         public IActionResult AddNewMovie([FromBody] AddMovieDTO movie)
         {
             var newMovie = _movieService.AddMovie(movie);
