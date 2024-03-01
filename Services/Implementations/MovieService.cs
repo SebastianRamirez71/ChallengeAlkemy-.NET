@@ -24,15 +24,15 @@ namespace challange_disney.Services.Implementations
             return _mapper.Map<List<MovieDTO>>(_context.Movies.Where(x => x.Status == GeneralStatus.Activo)).ToList();
         }
 
-        public Movie AddMovie(AddMovieDTO newMovie)
+        public Movie AddMovie(AddMovieDTO movieDTO)
         {
             var movie = new Movie
             {
-                CreationDate = newMovie.CreationDate,
-                Image = newMovie.Image,
-                Title = newMovie.Title,
-                GenreId = newMovie.GenreId,
-                Rating = newMovie.Rating
+                CreationDate = movieDTO.CreationDate,
+                Image = movieDTO.Image,
+                Title = movieDTO.Title,
+                GenreId = movieDTO.GenreId,
+                Rating = movieDTO.Rating
             };
             _context.Movies.Add(movie);
             _context.SaveChanges();
@@ -51,6 +51,19 @@ namespace challange_disney.Services.Implementations
             }
         }
 
-        
+        public Movie UpdateMovie(int id, UpdateMovieDTO movieDTO)
+        {
+            var movieToUpdate = _context.Movies.FirstOrDefault(x => x.Id == id);
+
+            if (movieToUpdate != null)
+            {
+
+                movieToUpdate.CreationDate = movieDTO.CreationDate;
+                movieToUpdate.Image = movieDTO.Image;
+                movieToUpdate.Title = movieDTO.Title;
+            }
+            _context.SaveChanges();
+            return movieToUpdate;
+        }
     }
 }

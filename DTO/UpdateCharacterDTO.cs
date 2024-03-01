@@ -1,6 +1,6 @@
 ﻿namespace challange_disney.DTO
 {
-    public class AddCharacterDTO
+    public class UpdateCharacterDTO
     {
         public string Name { get; set; } = string.Empty;
         public int Age { get; set; }

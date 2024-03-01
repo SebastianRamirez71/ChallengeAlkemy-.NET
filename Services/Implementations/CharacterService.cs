@@ -20,18 +20,32 @@ namespace challange_disney.Services.Implementations
         {
             return _mapper.Map<List<CharacterDTO>>(_context.Characters.Where(x => x.Status == GeneralStatus.Activo)).ToList();
         }
-        public Character AddCharacter(CharacterDTO newCharacter)
+        public Character AddCharacter(AddCharacterDTO newCharacter)
         {
             var character = new Character
             {
                 Image = newCharacter.Image,
                 Name = newCharacter.Name,
-                
-                
+                Age = newCharacter.Age,
+                Bio = newCharacter.Bio,
+                Weight = newCharacter.Weight
             };
             _context.Characters.Add(character);
             _context.SaveChanges();
             return character;
+        }
+        public Character UpdateCharacter(int id, UpdateCharacterDTO updateCharacterDTO)
+        {
+            var updateCharacter = _context.Characters.FirstOrDefault(x => x.Id == id);
+            if(updateCharacter != null)
+            {
+                updateCharacter.Name = updateCharacterDTO.Name;
+                updateCharacter.Age = updateCharacterDTO.Age;
+                updateCharacter.Bio = updateCharacterDTO.Bio;
+                updateCharacter.Weight = updateCharacterDTO.Weight;
+            }
+            _context.SaveChanges();
+            return updateCharacter;
         }
 
         public void DeleteCharacter(int id)

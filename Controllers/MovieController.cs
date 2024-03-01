@@ -16,20 +16,27 @@ namespace challange_disney.Controllers
             
         }
 
-        [HttpGet("Obtener")]
+        [HttpGet("movies")]
         public IActionResult GetMovies()
         {
             return Ok(_movieService.GetMovies());
         }
 
-        [HttpPost]
-        public IActionResult AddNewMovie([FromBody] AddMovieDTO movie)
+        [HttpPost("AddMovie")]
+        public IActionResult AddMovie([FromBody] AddMovieDTO movie)
         {
             var newMovie = _movieService.AddMovie(movie);
             return Ok(newMovie);
         }
 
-        [HttpDelete("Eliminar")]
+        [HttpPut("UpdateMovie/{id}")]
+        public IActionResult UpdateMovie(int id, [FromBody]UpdateMovieDTO movieDTO)
+        {
+           var updateMovie = _movieService.UpdateMovie(id, movieDTO);
+            return Ok(updateMovie);
+        }
+
+        [HttpDelete("RemoveMovie/{id}")]
         public IActionResult DeleteMovie(int id)
         {
             _movieService.DeleteMovie(id);

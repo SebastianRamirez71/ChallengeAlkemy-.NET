@@ -7,7 +7,8 @@ namespace challange_disney.Services.Interfaces
     public interface ICharacterService
     {
         List<CharacterDTO> GetCharacters();
-        Character AddCharacter(CharacterDTO newCharacter);
+        Character AddCharacter(AddCharacterDTO newCharacter);
+        Character UpdateCharacter(int id, UpdateCharacterDTO updateCharacterDTO);
         void DeleteCharacter(int id);
     }
 }

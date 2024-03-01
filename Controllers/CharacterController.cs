@@ -17,10 +17,24 @@ namespace challange_disney.Controllers
         {
             return Ok(_characterService.GetCharacters());
         }
-        [HttpPost]
-        public IActionResult AddCharacter(CharacterDTO characterDTO)
+        [HttpPost("AddCharacter")]
+        public IActionResult AddCharacter(AddCharacterDTO characterDTO)
         {
             _characterService.AddCharacter(characterDTO);
+            return Ok();
+        }
+
+        [HttpPut("UpdateCharacter/{id}")]
+        public IActionResult UpdateCharacter(int id, [FromBody]UpdateCharacterDTO updateCharacterDTO)
+        {
+            _characterService.UpdateCharacter(id, updateCharacterDTO);
+            return Ok();
+        }
+
+        [HttpDelete("RemoveCharacter")]
+        public IActionResult DeleteCharacter(int id)
+        {
+            _characterService.DeleteCharacter(id);
             return Ok();
         }
     }
