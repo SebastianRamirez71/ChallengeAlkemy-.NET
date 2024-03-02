@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using challange_disney.DTO;
+using challange_disney.DTO.Movie;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,12 @@ namespace challange_disney.Controllers
         [HttpGet("movies")]
         public IActionResult GetMovies()
         {
-            return Ok(_movieService.GetMovies());
+            return Ok(_movieService.GetMovies<MovieDTO>());
+        }
+        [HttpGet("MoviesWDetails")]
+        public IActionResult GetMoviesWithDetails()
+        {
+            return Ok(_movieService.GetMovies<MovieWithDetailsDTO>());
         }
 
         [HttpPost("AddMovie")]

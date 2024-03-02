@@ -10,6 +10,7 @@ namespace challange_disney.DTO
         [Range(1, 5)]
         public int Rating { get; set; }
         public int GenreId { get; set; }
+        public List<int> CharacterId { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using challange_disney.DTO;
+using challange_disney.DTO.Character;
 using challange_disney.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +16,15 @@ namespace challange_disney.Controllers
         [HttpGet("/characters")]
         public IActionResult GetCharacters()
         {
-            return Ok(_characterService.GetCharacters());
+            return Ok(_characterService.GetCharacters<CharacterDTO>());
         }
+
+        [HttpGet("GetCharacterWithDetails")]
+        public IActionResult GetCharacterWithDetails()
+        {
+            return Ok(_characterService.GetCharacters<CharacterWithDetailsDTO>());
+        }
+
         [HttpPost("AddCharacter")]
         public IActionResult AddCharacter(AddCharacterDTO characterDTO)
         {
@@ -25,7 +33,7 @@ namespace challange_disney.Controllers
         }
 
         [HttpPut("UpdateCharacter/{id}")]
-        public IActionResult UpdateCharacter(int id, [FromBody]UpdateCharacterDTO updateCharacterDTO)
+        public IActionResult UpdateCharacter(int id, [FromBody] UpdateCharacterDTO updateCharacterDTO)
         {
             _characterService.UpdateCharacter(id, updateCharacterDTO);
             return Ok();

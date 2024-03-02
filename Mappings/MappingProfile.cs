@@ -11,6 +11,7 @@ namespace challange_disney.Mappings
             //Cuando las props de las 2 entidades tienen el mismo nombre, se realiza de esta manera
             CreateMap<Movie, MovieDTO>();
             CreateMap<Character, CharacterDTO>();
+            CreateMap<Character, CharacterWithDetailsDTO>();
         }
     }
 }

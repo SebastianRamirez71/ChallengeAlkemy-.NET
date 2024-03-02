@@ -12,8 +12,8 @@ using challange_disney.Data;
 namespace challangedisney.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240227170703_InialMigration")]
-    partial class InialMigration
+    [Migration("20240301191816_CharacterMovieInMovie")]
+    partial class CharacterMovieInMovie
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,17 +25,19 @@ namespace challangedisney.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CharacterMovie", b =>
+            modelBuilder.Entity("challange_disney.Models.CharacterMovie", b =>
                 {
-                    b.Property<int>("CharactersId")
-                        .HasColumnType("int");
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
 
-                    b.Property<int>("MoviesId")
-                        .HasColumnType("int");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
-                    b.HasKey("CharactersId", "MoviesId");
+                    b.HasKey("CharacterId", "MovieId");
 
-                    b.HasIndex("MoviesId");
+                    b.HasIndex("MovieId");
 
                     b.ToTable("CharacterMovie");
                 });
@@ -63,6 +65,9 @@ namespace challangedisney.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -78,6 +83,7 @@ namespace challangedisney.Migrations
                             Bio = "asd",
                             Image = "asdads",
                             Name = "Robert",
+                            Status = 1,
                             Weight = 75
                         });
                 });
@@ -132,6 +138,9 @@ namespace challangedisney.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -150,23 +159,28 @@ namespace challangedisney.Migrations
                             GenreId = 1,
                             Image = "asda",
                             Rating = 2,
+                            Status = 1,
                             Title = "Peli 1"
                         });
                 });
 
-            modelBuilder.Entity("CharacterMovie", b =>
+            modelBuilder.Entity("challange_disney.Models.CharacterMovie", b =>
                 {
-                    b.HasOne("challange_disney.Models.Entities.Character", null)
-                        .WithMany()
-                        .HasForeignKey("CharactersId")
+                    b.HasOne("challange_disney.Models.Entities.Character", "Character")
+                        .WithMany("CharacterMovies")
+                        .HasForeignKey("CharacterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("challange_disney.Models.Entities.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MoviesId")
+                    b.HasOne("challange_disney.Models.Entities.Movie", "Movie")
+                        .WithMany("CharacterMovies")
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Character");
+
+                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("challange_disney.Models.Entities.Movie", b =>
@@ -178,9 +192,19 @@ namespace challangedisney.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("challange_disney.Models.Entities.Character", b =>
+                {
+                    b.Navigation("CharacterMovies");
+                });
+
             modelBuilder.Entity("challange_disney.Models.Entities.Genre", b =>
                 {
                     b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("challange_disney.Models.Entities.Movie", b =>
+                {
+                    b.Navigation("CharacterMovies");
                 });
 #pragma warning restore 612, 618
         }

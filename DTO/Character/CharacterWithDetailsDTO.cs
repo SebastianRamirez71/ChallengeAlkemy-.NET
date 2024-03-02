@@ -1,13 +1,9 @@
-﻿using challange_disney.DTO;
-using System.Text.Json.Serialization;
+﻿using challange_disney.Models.Entities;
 
-namespace challange_disney.Models.Entities
+namespace challange_disney.DTO
 {
-    public class Character
+    public class CharacterWithDetailsDTO
     {
-        public Character() {
-            Status = GeneralStatus.Activo;
-        }
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Age { get; set; }
@@ -15,8 +11,7 @@ namespace challange_disney.Models.Entities
         public string Image { get; set; } = string.Empty;
         public string Bio { get; set; } = string.Empty;
         public GeneralStatus Status { get; set; }
-        [JsonIgnore]
-        public ICollection<Movie>? Movies { get; set; } = new List<Movie>();
+        public List<MovieDTO>? Movies { get; set; }
 
     }
 }

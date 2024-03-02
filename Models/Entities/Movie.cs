@@ -1,5 +1,6 @@
 ﻿using challange_disney.DTO;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace challange_disney.Models.Entities
 {
@@ -21,6 +22,7 @@ namespace challange_disney.Models.Entities
         public int Rating { get; set; }
         public int GenreId { get; set; }
         public GeneralStatus Status { get; set; }
-        public IEnumerable<Character>? Characters { get; set; }
+        [JsonIgnore]
+        public ICollection<Character>? Characters { get; set; } = new List<Character>();
     }
 }

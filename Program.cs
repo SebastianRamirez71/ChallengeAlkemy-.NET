@@ -20,6 +20,7 @@ namespace challange_disney
             });
             builder.Services.AddScoped<IMovieService, MovieService>();
             builder.Services.AddScoped<ICharacterService, CharacterService>();
+            builder.Services.AddScoped<IGenreService, GenreService>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

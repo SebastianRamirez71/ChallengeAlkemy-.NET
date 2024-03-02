@@ -6,7 +6,7 @@ namespace challange_disney.Services.Interfaces
     public interface IMovieService
     {
         Movie AddMovie(AddMovieDTO movieDTO);
-        List<MovieDTO> GetMovies();
+        List<T> GetMovies<T>();
         Movie UpdateMovie(int id, UpdateMovieDTO movieDTO);
         void DeleteMovie(int id);
     }

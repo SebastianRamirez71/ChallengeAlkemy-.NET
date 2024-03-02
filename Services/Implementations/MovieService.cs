@@ -5,6 +5,7 @@ using challange_disney.DTO;
 using challange_disney.Mappings;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace challange_disney.Services.Implementations
 {
@@ -19,9 +20,21 @@ namespace challange_disney.Services.Implementations
            
             
         }
-        public List<MovieDTO> GetMovies()
+
+
+        public List<T> GetMovies<T>()
         {
-            return _mapper.Map<List<MovieDTO>>(_context.Movies.Where(x => x.Status == GeneralStatus.Activo)).ToList();
+            IQueryable<Movie> MoviesQuery = _context.Movies
+                .Where(x => x.Status == GeneralStatus.Activo);
+
+            if (typeof(T) == typeof(CharacterWithDetailsDTO)) // si el tipo es CharacterWithDetails se incluye las peliculas
+            {
+                MoviesQuery = MoviesQuery.Include(c => c.Characters);
+            }
+
+            var movies = _mapper.Map<List<T>>(MoviesQuery.ToList());
+
+            return movies;
         }
 
         public Movie AddMovie(AddMovieDTO movieDTO)
@@ -34,6 +47,21 @@ namespace challange_disney.Services.Implementations
                 GenreId = movieDTO.GenreId,
                 Rating = movieDTO.Rating
             };
+
+            foreach (var characterId in movieDTO.CharacterId)
+            {
+                var existingCharacterId = _context.Characters.FirstOrDefault(c => c.Id == characterId);
+                if (existingCharacterId != null)
+                {
+                    movie.Characters.Add(existingCharacterId);
+                }
+                else
+                {
+                    throw new ArgumentException($"El personaje con el ID: {characterId} no existe");
+                }
+            }
+
+
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return movie;
