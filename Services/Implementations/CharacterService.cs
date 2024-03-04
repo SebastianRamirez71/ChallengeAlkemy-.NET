@@ -18,6 +18,23 @@ namespace challange_disney.Services.Implementations
             _context = context;
             _mapper = AutoMapperConfig.Configure();
         }
+
+        public List<CharacterWithDetailsDTO> GetCharactersByQuery(string? name, int? age, int? movies)
+        {
+            var characters = _context.Characters.Where(x => x.Status == GeneralStatus.Activo).Include(m => m.Movies);
+            if (name != null || age != null || movies != null)
+            {
+                var byQuery = characters.Where(c =>
+                    (name == null || c.Name.ToLower().Contains(name.ToLower())) &&
+                    (!age.HasValue || c.Age == age) &&
+                    (!movies.HasValue || c.Movies.Any(m => m.Id == movies))
+                );
+                return _mapper.Map<List<CharacterWithDetailsDTO>>(byQuery);
+            }
+            return _mapper.Map<List<CharacterWithDetailsDTO>>(characters);
+        }
+
+
         public List<T> GetCharacters<T>()
         {
             IQueryable<Character> charactersQuery = _context.Characters
@@ -85,6 +102,6 @@ namespace challange_disney.Services.Implementations
             }
         }
 
-       
+        
     }
 }

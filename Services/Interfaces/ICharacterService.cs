@@ -7,6 +7,7 @@ namespace challange_disney.Services.Interfaces
 {
     public interface ICharacterService
     {
+        List<CharacterWithDetailsDTO> GetCharactersByQuery(string? name, int? age, int? movies);
         List<T> GetCharacters<T>();
         Character AddCharacter(AddCharacterDTO newCharacter);
         Character UpdateCharacter(int id, UpdateCharacterDTO updateCharacterDTO);

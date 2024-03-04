@@ -12,8 +12,8 @@ using challange_disney.Data;
 namespace challangedisney.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240227173033_StatusInMovie")]
-    partial class StatusInMovie
+    [Migration("20240303200347_updateContext")]
+    partial class updateContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,9 @@ namespace challangedisney.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("Weight")
                         .HasColumnType("int");
 
@@ -74,11 +77,22 @@ namespace challangedisney.Migrations
                         new
                         {
                             Id = 1,
+                            Age = 30,
+                            Bio = "Bio de Pedro",
+                            Image = "",
+                            Name = "Pedro",
+                            Status = 1,
+                            Weight = 70
+                        },
+                        new
+                        {
+                            Id = 2,
                             Age = 25,
-                            Bio = "asd",
-                            Image = "asdads",
-                            Name = "Robert",
-                            Weight = 75
+                            Bio = "Bio de Angel",
+                            Image = "",
+                            Name = "Angel",
+                            Status = 1,
+                            Weight = 65
                         });
                 });
 
@@ -106,8 +120,20 @@ namespace challangedisney.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "asdasd",
-                            Name = "Drama"
+                            Image = "",
+                            Name = "Acción"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Image = "",
+                            Name = "Aventura"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Image = "",
+                            Name = "Comedia"
                         });
                 });
 
@@ -149,12 +175,22 @@ namespace challangedisney.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2014, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreationDate = new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2913),
                             GenreId = 1,
-                            Image = "asda",
-                            Rating = 2,
-                            Status = 0,
-                            Title = "Peli 1"
+                            Image = "image.png",
+                            Rating = 3,
+                            Status = 1,
+                            Title = "El arte"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreationDate = new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2924),
+                            GenreId = 3,
+                            Image = "image2.png",
+                            Rating = 4,
+                            Status = 1,
+                            Title = "La luz"
                         });
                 });
 

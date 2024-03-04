@@ -5,7 +5,6 @@ namespace challange_disney.DTO.Movie
     public class MovieWithDetailsDTO
     {
         public int Id { get; set; }
-
         public string Title { get; set; } = string.Empty;
         public string Image { get; set; } = string.Empty;
         public DateTime CreationDate { get; set; }
