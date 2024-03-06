@@ -69,6 +69,7 @@ namespace challange_disney
             builder.Services.AddScoped<ICharacterService, CharacterService>();
             builder.Services.AddScoped<IGenreService, GenreService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IEmailSenderService, EmailSenderService>();
             
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

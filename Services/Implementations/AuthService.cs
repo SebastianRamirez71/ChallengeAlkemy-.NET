@@ -2,11 +2,14 @@
 using challange_disney.DTO.User;
 using challange_disney.Models;
 using challange_disney.Services.Interfaces;
+using SendGrid;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using SendGrid.Helpers.Mail;
+using Microsoft.Graph.Models.Security;
 
 namespace challange_disney.Services.Implementations
 {
@@ -14,10 +17,12 @@ namespace challange_disney.Services.Implementations
     {
         private readonly Context _context;
         private readonly IConfiguration _config;
-        public AuthService(Context context, IConfiguration config)
+        private readonly IEmailSenderService _emailService;
+        public AuthService(Context context, IConfiguration config, IEmailSenderService emailService)
         {
             _context = context;
             _config = config;
+            _emailService = emailService;
         }
 
         public string Register(UserRegisterDTO User)
@@ -37,13 +42,16 @@ namespace challange_disney.Services.Implementations
                 Name = User.Name,
                 Password = User.Password
 
-            }
-                );
+            });
             _context.SaveChanges();
             string response = GetToken(_context.Users.OrderBy(x => x.Id).Last());
+            _emailService.SendEmail(User.Email, User.Name).Wait();
             return response;
 
         }
+
+        
+
         public string Login(UserInfo User)
         {
             User user = _context.Users.FirstOrDefault(x => x.Email == User.Email && x.Password == User.Password);

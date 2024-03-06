@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CJSUydTEBYNy+QIXFEGFWE5HXDc922v1BskJFzRpTtO6sRiqGYsA8pyf+LhaMDV9Z6Sed0tCMj/RfZojF5ni5Q==",
+  "dgSpecHash": "rX/GhsKH/OFBlkktd9IJVBnbUPSx1GrloAX+/yfungpFj4g4SkTKK0Js4z6Ns19yikxIY56E00t8C/ti2ewukQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,9 @@
     "C:\\Users\\sebar\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\sebar\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\sebar\\.nuget\\packages\\sendgrid\\9.29.2\\sendgrid.9.29.2.nupkg.sha512",
+    "C:\\Users\\sebar\\.nuget\\packages\\starkbank-ecdsa\\1.3.3\\starkbank-ecdsa.1.3.3.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\std.uritemplate\\0.0.50\\std.uritemplate.0.0.50.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",

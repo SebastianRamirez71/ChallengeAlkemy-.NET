@@ -98,3 +98,6 @@ C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\System.Text.J
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\SendGrid.dll
+C:\Users\sebar\Desktop\Challenge\challange-disney\bin\Debug\net6.0\StarkbankEcdsa.dll
