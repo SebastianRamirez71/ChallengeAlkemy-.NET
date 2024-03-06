@@ -8,7 +8,7 @@ namespace challange_disney.Services.Implementations
     {
         public async Task SendEmail(string email, string name)
         {
-            var apiKey = "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";
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("sebaprueba209@hotmail.com");
             var subject = "Te has registrado correctamente";
