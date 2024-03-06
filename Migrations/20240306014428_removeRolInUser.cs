@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace challangedisney.Migrations
 {
     /// <inheritdoc />
-    public partial class updateContext : Migration
+    public partial class removeRolInUser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,6 +43,22 @@ namespace challangedisney.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genres", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,8 +114,8 @@ namespace challangedisney.Migrations
                 columns: new[] { "Id", "Age", "Bio", "Image", "Name", "Status", "Weight" },
                 values: new object[,]
                 {
-                    { 1, 30, "Bio de Pedro", "", "Pedro", 1, 70 },
-                    { 2, 25, "Bio de Angel", "", "Angel", 1, 65 }
+                    { 1, 30, "Bio de Pedro", "image_Pedro.png", "Pedro", 1, 70 },
+                    { 2, 25, "Bio de Angel", "image_Angel.png", "Angel", 1, 65 }
                 });
 
             migrationBuilder.InsertData(
@@ -117,8 +133,8 @@ namespace challangedisney.Migrations
                 columns: new[] { "Id", "CreationDate", "GenreId", "Image", "Rating", "Status", "Title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2913), 1, "image.png", 3, 1, "El arte" },
-                    { 2, new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2924), 3, "image2.png", 4, 1, "La luz" }
+                    { 1, new DateTime(2024, 3, 5, 22, 44, 28, 249, DateTimeKind.Local).AddTicks(2299), 1, "image.png", 3, 1, "El arte" },
+                    { 2, new DateTime(2024, 3, 5, 22, 44, 28, 249, DateTimeKind.Local).AddTicks(2311), 3, "image2.png", 4, 1, "La luz" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -137,6 +153,9 @@ namespace challangedisney.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CharacterMovie");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Characters");

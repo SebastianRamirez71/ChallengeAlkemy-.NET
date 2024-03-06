@@ -1,4 +1,5 @@
-﻿using challange_disney.Models.Entities;
+﻿using challange_disney.Models;
+using challange_disney.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 
@@ -31,13 +32,12 @@ namespace challange_disney.Data
                 new Movie { Id = 1, Title = "El arte", Rating = 3, CreationDate = DateTime.Now, Image = "image.png", GenreId=1 },
                 new Movie { Id = 2, Title = "La luz", Rating = 4, CreationDate = DateTime.Now, Image = "image2.png", GenreId=3 }
                 );
-
-        
         }
 
         public virtual DbSet<Movie>? Movies { get; set; }
         public virtual DbSet<Character>? Characters { get; set; }
         public virtual DbSet<Genre>? Genres { get; set; }
+        public virtual DbSet<User>? Users { get; set; }
        
        
 

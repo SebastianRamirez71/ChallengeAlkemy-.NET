@@ -4,6 +4,7 @@ using challange_disney.DTO.Movie;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Implementations;
 using challange_disney.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Graph.Models;
@@ -13,6 +14,7 @@ namespace challange_disney.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CharacterController : Controller
     {
        private readonly ICharacterService _characterService;

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w+3dpoyO4z8rRkB0ppW2JWtHES2MGqkRlklg8+/7wom1niSZv3AG1I+8CLvQJqRFv4F/8AeXoJpSYqlxtzfHlQ==",
+  "dgSpecHash": "CJSUydTEBYNy+QIXFEGFWE5HXDc922v1BskJFzRpTtO6sRiqGYsA8pyf+LhaMDV9Z6Sed0tCMj/RfZojF5ni5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\sebar\\.nuget\\packages\\azure.core\\1.37.0\\azure.core.1.37.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\sebar\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\sebar\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",

@@ -17,9 +17,7 @@ namespace challange_disney.Services.Implementations
         public MovieService(Context context)
         {
             _context = context;
-            _mapper = AutoMapperConfig.Configure();
-           
-            
+            _mapper = AutoMapperConfig.Configure();  
         }
 
         public List<MovieWithDetailsDTO> GetMoviesByQuery(string? title, int? genre, string? orderBy)
@@ -33,28 +31,26 @@ namespace challange_disney.Services.Implementations
                     (!genre.HasValue || c.GenreId == genre)
                 );
 
-                switch (orderBy.ToLower())
+                if(orderBy != null)
                 {
-                    case "asc":
-                        byQuery = byQuery.OrderBy(c => c.CreationDate);
-                        break;
-                    case "desc":
-                        byQuery = byQuery.OrderByDescending(c => c.CreationDate);
-                        break;
-                    default:
+                    switch (orderBy.ToLower())
+                    {
+                        case "asc":
+                            byQuery = byQuery.OrderBy(c => c.CreationDate);
+                            break;
+                        case "desc":
+                            byQuery = byQuery.OrderByDescending(c => c.CreationDate);
+                            break;
+                        default:
                         
-                        break;
+                            break;
+                    }
                 }
 
-                return _mapper.Map<List<MovieWithDetailsDTO>>(byQuery);
-
-                
-                   
-                
+                return _mapper.Map<List<MovieWithDetailsDTO>>(byQuery);   
 
             }
             return _mapper.Map<List<MovieWithDetailsDTO>>(movies);
-
         }
 
         public List<T> GetMovies<T>()
@@ -79,7 +75,6 @@ namespace challange_disney.Services.Implementations
                 CreationDate = movieDTO.CreationDate,
                 Image = movieDTO.Image,
                 Title = movieDTO.Title,
-                GenreId = movieDTO.GenreId,
                 Rating = movieDTO.Rating
             };
 
@@ -93,10 +88,20 @@ namespace challange_disney.Services.Implementations
                 }
                 else
                 {
-                  
                     throw new ArgumentException($"El personaje con el ID: {characterId} no existe");
                 }
             }
+
+            var existingGenre = _context.Genres.FirstOrDefault(g => g.Id == movieDTO.GenreId);
+            if (existingGenre != null)
+            {
+                movie.GenreId = existingGenre.Id;
+            }
+            else
+            {
+                throw new ArgumentException($"El genero con el ID: {existingGenre} no existe");
+            }
+
 
             _context.Movies.Add(movie);
             _context.SaveChanges();

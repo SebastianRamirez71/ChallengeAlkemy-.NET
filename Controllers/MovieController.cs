@@ -3,12 +3,14 @@ using challange_disney.DTO;
 using challange_disney.DTO.Movie;
 using challange_disney.Models.Entities;
 using challange_disney.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace challange_disney.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;

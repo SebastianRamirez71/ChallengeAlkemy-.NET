@@ -76,7 +76,7 @@ namespace challangedisney.Migrations
                             Id = 1,
                             Age = 30,
                             Bio = "Bio de Pedro",
-                            Image = "",
+                            Image = "image_Pedro.png",
                             Name = "Pedro",
                             Status = 1,
                             Weight = 70
@@ -86,7 +86,7 @@ namespace challangedisney.Migrations
                             Id = 2,
                             Age = 25,
                             Bio = "Bio de Angel",
-                            Image = "",
+                            Image = "image_Angel.png",
                             Name = "Angel",
                             Status = 1,
                             Weight = 65
@@ -172,7 +172,7 @@ namespace challangedisney.Migrations
                         new
                         {
                             Id = 1,
-                            CreationDate = new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2913),
+                            CreationDate = new DateTime(2024, 3, 5, 22, 44, 28, 249, DateTimeKind.Local).AddTicks(2299),
                             GenreId = 1,
                             Image = "image.png",
                             Rating = 3,
@@ -182,13 +182,41 @@ namespace challangedisney.Migrations
                         new
                         {
                             Id = 2,
-                            CreationDate = new DateTime(2024, 3, 3, 17, 3, 46, 935, DateTimeKind.Local).AddTicks(2924),
+                            CreationDate = new DateTime(2024, 3, 5, 22, 44, 28, 249, DateTimeKind.Local).AddTicks(2311),
                             GenreId = 3,
                             Image = "image2.png",
                             Rating = 4,
                             Status = 1,
                             Title = "La luz"
                         });
+                });
+
+            modelBuilder.Entity("challange_disney.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CharacterMovie", b =>

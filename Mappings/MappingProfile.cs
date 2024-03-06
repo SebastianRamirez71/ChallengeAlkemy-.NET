@@ -2,6 +2,7 @@
 using AutoMapper;
 using challange_disney.DTO;
 using challange_disney.DTO.Movie;
+using challange_disney.DTO.Genre;
 
 namespace challange_disney.Mappings
 {
