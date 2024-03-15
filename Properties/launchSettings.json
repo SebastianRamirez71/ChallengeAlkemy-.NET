@@ -1,4 +1,33 @@
-﻿{
+{
+  "profiles": {
+    "challange_disney": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SENDGRID_API_KEY": "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"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7073;http://localhost:5271"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger/index.html",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SENDGRID_API_KEY": "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"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger/index.html",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -6,28 +35,6 @@
     "iisExpress": {
       "applicationUrl": "http://localhost:8052",
       "sslPort": 44300
-    }
-  },
-  "profiles": {
-    "challange_disney": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7073;http://localhost:5271",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "SENDGRID_API_KEY": "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"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "SENDGRID_API_KEY": "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"
-      }
     }
   }
 }

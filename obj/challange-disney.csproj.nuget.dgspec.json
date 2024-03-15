@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj": {}
+    "C:\\Users\\sebar\\Desktop\\ChallengeAPI\\ChallengeAlkemy-.NET\\challange-disney.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj": {
+    "C:\\Users\\sebar\\Desktop\\ChallengeAPI\\ChallengeAlkemy-.NET\\challange-disney.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj",
+        "projectUniqueName": "C:\\Users\\sebar\\Desktop\\ChallengeAPI\\ChallengeAlkemy-.NET\\challange-disney.csproj",
         "projectName": "challange-disney",
-        "projectPath": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\challange-disney.csproj",
+        "projectPath": "C:\\Users\\sebar\\Desktop\\ChallengeAPI\\ChallengeAlkemy-.NET\\challange-disney.csproj",
         "packagesPath": "C:\\Users\\sebar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sebar\\Desktop\\Challenge\\challange-disney\\obj\\",
+        "outputPath": "C:\\Users\\sebar\\Desktop\\ChallengeAPI\\ChallengeAlkemy-.NET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -72,6 +76,10 @@
             "Microsoft.Graph": {
               "target": "Package",
               "version": "[5.43.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.18.1, )"
             },
             "SendGrid": {
               "target": "Package",

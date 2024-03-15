@@ -17,7 +17,7 @@ namespace challange_disney.Services.Implementations
             var htmlContent = $"<strong>Bienvenido: {name}!</strong>" +
                 "<br><strong> Challenge API .NET </strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
+            await client.SendEmailAsync(msg);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace challange_disney.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class MovieController : Controller
     {
         private readonly IMovieService _movieService;

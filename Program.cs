@@ -16,12 +16,13 @@ namespace challange_disney
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            
             builder.Services.AddControllers();
+            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ??
+                              builder.Configuration.GetConnectionString("DefaultConnection");
+
             builder.Services.AddDbContext<Context>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+                                                                options.UseSqlServer(connectionString));
 
             #region JWT
             builder.Services.AddSwaggerGen(setupAction =>
@@ -78,12 +79,12 @@ namespace challange_disney
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+           
                 app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
+                app.UseSwaggerUI(c=> c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ejemplo de API"));
+                
+         
+            
             app.UseHttpsRedirection();
 
             app.UseAuthentication();

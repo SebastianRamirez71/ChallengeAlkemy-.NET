@@ -70,43 +70,40 @@ namespace challange_disney.Services.Implementations
 
         public Movie AddMovie(AddMovieDTO movieDTO)
         {
+            var characters = _context.Characters.Where(c => movieDTO.CharacterId.Contains(c.Id)).ToList();
+            if (characters.Count != movieDTO.CharacterId.Count)
+            {
+                var nonExistingCharacterIds = movieDTO.CharacterId.Except(characters.Select(c => c.Id));
+                    throw new ArgumentException($"Los siguientes IDs de personajes no existen: {string.Join(",", nonExistingCharacterIds)}");
+            }
+
+            var genre = _context.Genres.SingleOrDefault(g => g.Id == movieDTO.GenreId);
+            if (genre == null)
+            {
+                throw new ArgumentException($"El género con el ID: {movieDTO.GenreId} no existe");
+            }
+
+
             var movie = new Movie
             {
                 CreationDate = movieDTO.CreationDate,
                 Image = movieDTO.Image,
                 Title = movieDTO.Title,
-                Rating = movieDTO.Rating
+                Rating = movieDTO.Rating,
+                GenreId = genre.Id
             };
 
-            foreach (var characterId in movieDTO.CharacterId)
+            foreach (var character in characters)
             {
-                var existingCharacter = _context.Characters.FirstOrDefault(c => c.Id == characterId);
-                if (existingCharacter != null)
-                {
-                 
-                    movie.Characters.Add(existingCharacter);
-                }
-                else
-                {
-                    throw new ArgumentException($"El personaje con el ID: {characterId} no existe");
-                }
+                movie.Characters.Add(character);
             }
 
-            var existingGenre = _context.Genres.FirstOrDefault(g => g.Id == movieDTO.GenreId);
-            if (existingGenre != null)
-            {
-                movie.GenreId = existingGenre.Id;
-            }
-            else
-            {
-                throw new ArgumentException($"El genero con el ID: {existingGenre} no existe");
-            }
-
-
+            // Agregar la película a la base de datos
             _context.Movies.Add(movie);
             _context.SaveChanges();
             return movie;
         }
+
 
 
         public void DeleteMovie(int id)

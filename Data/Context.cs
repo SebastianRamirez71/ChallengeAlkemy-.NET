@@ -1,6 +1,8 @@
 ﻿using challange_disney.Models;
 using challange_disney.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Reflection.Emit;
 
 namespace challange_disney.Data
@@ -10,7 +12,21 @@ namespace challange_disney.Data
 
         public Context(DbContextOptions<Context>options ) :base(options)
         {
-            
+            try
+            {
+                var dbCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
+                if (dbCreator != null)
+                {
+                    if (!dbCreator.CanConnect())
+                        dbCreator.Create();
+                    if (!dbCreator.HasTables())
+                        dbCreator.CreateTables();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
