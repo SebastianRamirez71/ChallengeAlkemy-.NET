@@ -21,7 +21,7 @@ namespace challange_disney.Controllers
             
         }
 
-        [HttpGet("Movies")]
+        [HttpGet("movies")]
         public IActionResult GetMovies()
         {
             return Ok(_movieService.GetMovies<MovieDTO>());

@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
-ENV DB_CONNECTION_STRING="Server=192.168.56.1,1433;Database=ChallengeAlkemy;User ID=seba;Password=password;Encrypt=False;Trust Server Certificate=False;"
+ENV DB_CONNECTION_STRING="Server=192.168.56.1,1433;Database=ChallengeAlkemy2;User ID=seba;Password=password;Encrypt=False;Trust Server Certificate=False;"
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src

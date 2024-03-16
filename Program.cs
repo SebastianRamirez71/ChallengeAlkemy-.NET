@@ -15,18 +15,12 @@ namespace challange_disney
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddHttpsRedirection(options =>
-            {
-                options.HttpsPort = 443; // Puerto HTTPS que estás utilizando
-            });
+           
 
             builder.Services.AddControllers();
-            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ??
-                              builder.Configuration.GetConnectionString("DefaultConnection");
+            string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
-            builder.Services.AddDbContext<Context>(options =>
-                                                                options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(connectionString));
 
             #region JWT
             builder.Services.AddSwaggerGen(setupAction =>
@@ -80,28 +74,20 @@ namespace challange_disney
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                    builder.AllowAnyOrigin()
-                           .AllowAnyMethod()
-                           .AllowAnyHeader());
-            });
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
            
-                app.UseSwagger();
-                app.UseSwaggerUI(c=> c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ejemplo de API"));
+            app.UseSwagger();
+            app.UseSwaggerUI(c=> c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ejemplo de API"));
                 
-         
-            
             app.UseHttpsRedirection();
              
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseCors();
+          
             app.MapControllers();
 
             app.Run();
