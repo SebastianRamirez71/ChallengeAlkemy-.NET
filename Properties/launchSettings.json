@@ -1,5 +1,16 @@
 {
   "profiles": {
+      "https": {
+        "commandName": "Project",
+        "dotnetRunMessages": true,
+        "launchBrowser": true,
+        "launchUrl": "swagger",
+        "apllicationUrl": "https://localhost:7073;http://localhost:5271",
+        "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      }
+    },
     "challange_disney": {
       "commandName": "Project",
       "launchBrowser": true,
