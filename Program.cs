@@ -16,7 +16,11 @@ namespace challange_disney
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            
+            builder.Services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = 443; // Puerto HTTPS que estás utilizando
+            });
+
             builder.Services.AddControllers();
             string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ??
                               builder.Configuration.GetConnectionString("DefaultConnection");
@@ -86,7 +90,7 @@ namespace challange_disney
          
             
             app.UseHttpsRedirection();
-
+             
             app.UseAuthentication();
             app.UseAuthorization();
 
